@@ -4,8 +4,10 @@ package datastructures;
  * <p> Singly-linked basic LinkedList implementation.
  * 
  * <p> Guarantees the following:
- * 	<li> O(1) insertion and removal at head and tail of list
+ * 	<li> O(1) insertion and removal at head of list
+ * 	<li> O(n) insertion and removal at tail of list
  * 	<li> O(n) removal by search of element
+ * 	<li> O(n) size inquiry, although O(1) is certainly possible
  * 
  * @param <T>
  */
