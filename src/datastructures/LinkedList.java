@@ -149,7 +149,7 @@ public class LinkedList<T>
 	}
 	
 	/**
-	 * Removes the FIRST instance of the supplied element
+	 * Removes ALL instances of the supplied element
 	 * 
 	 * @param ele Element to search for and remove
 	 * @return true if an element(s) was removed, false if nothing was done
