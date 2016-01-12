@@ -117,15 +117,10 @@ public class LinkedList<T>
 	{
 		if (head == null)
 			return false;
-		else if (head.next == null)
+		else if (head.data.equals(ele) == true)
 		{
-			if (head.data.equals(ele) == true)
-			{
-				head = null;
-				return true;
-			}
-			else
-				return false;
+			head = head.next;
+			return true;
 		}
 		else
 		{
@@ -158,39 +153,33 @@ public class LinkedList<T>
 	{
 		if (head == null)
 			return false;
-		else if (head.next == null)
+		
+		if (head.data.equals(ele) == true)
 		{
-			if (head.data.equals(ele) == true)
+			head = head.next;
+		}
+
+		Node prev = head;
+		Node curr = head.next;
+		boolean removedAnything = false;
+		
+		while (curr != null)
+		{
+			if (curr.data.equals(ele) == true)
 			{
-				head = null;
-				return true;
+				prev.next = curr.next;
+				curr = curr.next; // Needed to keep the iteration going.
+				removedAnything = true;
 			}
 			else
-				return false;
-		}
-		else
-		{
-			Node prev = head;
-			Node curr = head.next;
-			boolean removedAnything = false;
-			
-			while (curr != null)
 			{
-				if (curr.data.equals(ele) == true)
-				{
-					prev.next = curr.next;
-					curr = curr.next; // Needed to keep the iteration going.
-					removedAnything = true;
-				}
-				else
-				{
-					prev = curr;
-					curr = curr.next;
-				}
+				prev = curr;
+				curr = curr.next;
 			}
-			
-			return removedAnything;
 		}
+		
+		return removedAnything;
+		
 	}
 	
 	/**
