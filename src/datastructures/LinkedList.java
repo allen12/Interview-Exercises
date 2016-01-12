@@ -1,5 +1,8 @@
 package datastructures;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * <p> Singly-linked basic LinkedList implementation.
  * 
@@ -11,7 +14,7 @@ package datastructures;
  * 
  * @param <T>
  */
-public class LinkedList<T>
+public class LinkedList<T> implements Iterable<T>
 {
 	private Node head;
 
@@ -211,12 +214,36 @@ public class LinkedList<T>
 	
 	/**
 	 * Appends another given LinkedList to the end of this one.
-	 * NOTE: REMOVES ALL ELEMENTS FROM THE INPUT LINKEDLIST
 	 * @param other The other list to add elements from
 	 */
 	public void addAll(LinkedList<T> other)
 	{
-		while (other.isEmpty() == false)
-			addLast(other.removeFirst());
+		for (T ele : other)
+			addLast(ele);
+	}
+
+	@Override
+	public Iterator<T> iterator() 
+	{
+		return new Iterator<T>()
+		{
+			Node curr = head;
+			
+			public boolean hasNext()
+			{
+				return curr != null;
+			}
+			
+			public T next()
+			{
+				if (hasNext() == false)
+					throw new NoSuchElementException("Iterator has no more elements!");
+				
+				T ret = curr.data;
+				curr = curr.next;
+				
+				return ret;
+			}
+		};
 	}
 }
