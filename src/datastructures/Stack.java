@@ -1,10 +1,10 @@
 package datastructures;
 
 /**
- * A LIFO Stack implemented with LinkedLists. This means that
+ * <p> A LIFO Stack implemented with LinkedLists. This means that
  * peek/pop/push are O(1) operations per the LinkedList implementation.
  * 
- * This specific implementation DOES NOT permit NULL arguments
+ * <p> This specific implementation DOES NOT permit NULL arguments
  * 
  * @param <T>
  */

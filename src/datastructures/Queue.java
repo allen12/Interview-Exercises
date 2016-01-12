@@ -1,11 +1,11 @@
 package datastructures;
 
 /**
- * A FIFO Queue implemented with LinkedLists. This means that
+ * <p> A FIFO Queue implemented with LinkedLists. This means that
  * enqueue is a O(n) operation and dequeue is a O(1) operation
  * per the LinkedList implementation.
  * 
- * This specific implementation DOES NOT permit NULL arguments
+ * <p> This specific implementation DOES NOT permit NULL arguments
  * 
  * @param <T>
  */

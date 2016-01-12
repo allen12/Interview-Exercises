@@ -219,4 +219,15 @@ public class LinkedList<T>
 	{
 		return size() == 0;
 	}
+	
+	/**
+	 * Appends another given LinkedList to the end of this one.
+	 * NOTE: REMOVES ALL ELEMENTS FROM THE INPUT LINKEDLIST
+	 * @param other The other list to add elements from
+	 */
+	public void addAll(LinkedList<T> other)
+	{
+		while (other.isEmpty() == false)
+			addLast(other.removeFirst());
+	}
 }
