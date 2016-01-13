@@ -19,8 +19,8 @@ public class HashTable<K, V> implements Iterable<HashTable<K, V>.Entry>
 	
 	public class Entry
 	{
-		K key;
-		V value;
+		public K key;
+		public V value;
 		
 		Entry(K k, V v)
 		{
@@ -80,7 +80,7 @@ public class HashTable<K, V> implements Iterable<HashTable<K, V>.Entry>
 	public void put(K key, V value)
 	{
 		checkForNulls(key, value);
-		int n = key.hashCode() % entries.length;
+		int n = Math.abs(key.hashCode() % entries.length);
 		
 		if (entries[n] == null)
 		{
@@ -109,7 +109,7 @@ public class HashTable<K, V> implements Iterable<HashTable<K, V>.Entry>
 	public V remove(K key)
 	{
 		checkForNulls(key);
-		int n = key.hashCode() % entries.length;
+		int n = Math.abs(key.hashCode() % entries.length);
 		
 		if (entries[n] == null)
 			return null;
@@ -139,7 +139,7 @@ public class HashTable<K, V> implements Iterable<HashTable<K, V>.Entry>
 	public V get(K key)
 	{
 		checkForNulls(key);
-		int n = key.hashCode() % entries.length;
+		int n = Math.abs(key.hashCode() % entries.length);
 		
 		if (entries[n] == null)
 			return null;
@@ -163,7 +163,7 @@ public class HashTable<K, V> implements Iterable<HashTable<K, V>.Entry>
 	public boolean contains(K key)
 	{
 		checkForNulls(key);
-		int n = key.hashCode() % entries.length;
+		int n = Math.abs(key.hashCode() % entries.length);
 		
 		return (entries[n] == null) ? false : entries[n].contains(new Entry(key, null));
 	}
