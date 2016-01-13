@@ -43,9 +43,13 @@ public class LinkedList<T> implements Iterable<T>
 	/**
 	 * Adds an element to the end (tail) of the list
 	 * @param ele Element to add
+	 * @throws IllegalArgumentException if user tries to add a NULL element
 	 */
 	public void addLast(T ele)
 	{
+		if (ele == null)
+			throw new IllegalArgumentException("Cannot add NULL elements!");
+		
 		if (head == null)
 			head = new Node(ele);
 		else
@@ -62,9 +66,13 @@ public class LinkedList<T> implements Iterable<T>
 	/**
 	 * Adds an element to the beginning (head) of this list
 	 * @param ele Element to add
+	 * @throws IllegalArgumentException if user tries to add a NULL element
 	 */
 	public void addFirst(T ele)
 	{
+		if (ele == null)
+			throw new IllegalArgumentException("Cannot add NULL elements!");
+		
 		if (head == null)
 			head = new Node(ele);
 		else
@@ -210,6 +218,26 @@ public class LinkedList<T> implements Iterable<T>
 	public boolean isEmpty()
 	{
 		return size() == 0;
+	}
+	
+	/**
+	 * Checks whether this list contains the specified element.
+	 * @param ele Element to check for
+	 * @return the evaluation of any o in the list where o.equals(ele)
+	 */
+	public boolean contains(T ele)
+	{
+		Node tmp = head;
+		
+		while (tmp != null)
+		{
+			if (tmp.data.equals(ele) == true)
+				return true;
+			
+			tmp = tmp.next;
+		}
+		
+		return false;
 	}
 	
 	/**
