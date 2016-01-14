@@ -41,7 +41,7 @@ public class Queue<T>
 	 * @return The removed element
 	 * @throws IllegalStateException if queue is empty
 	 */
-	public T offer()
+	public T poll()
 	{
 		return list.removeFirst();
 	}

@@ -145,6 +145,20 @@ public class BinarySearchTree<T extends Comparable<? super T>>
 	}
 	
 	/**
+	 * Obtain the value of the root node, if any.
+	 * 
+	 * @return Root node data
+	 * @throws IllegalStateException if tree is empty
+	 */
+	public T getValue()
+	{
+		if (isEmpty() == true)
+			throw new IllegalStateException("Tree is empty!");
+		
+		return root.data;
+	}
+	
+	/**
 	 * Adds an element to the binary search tree
 	 * 
 	 * @param ele Element to add

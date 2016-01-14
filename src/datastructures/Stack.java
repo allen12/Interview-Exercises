@@ -40,7 +40,7 @@ public class Stack<T>
 	 * @return The removed element
 	 * @throws IllegalStateException if stack is empty
 	 */
-	public T offer()
+	public T pop()
 	{
 		return list.removeFirst();
 	}
