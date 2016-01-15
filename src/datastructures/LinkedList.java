@@ -97,6 +97,20 @@ public class LinkedList<T> implements Iterable<T>
 	}
 	
 	/**
+	 * Peeks at, but does not remove the first element from the list
+	 * 
+	 * @return The first element
+	 * @throws IllegalStateException if list is empty
+	 */
+	public T peekFirst()
+	{
+		if (head == null)
+			throw new IllegalStateException("List is empty!");
+		else
+			return head.data;
+	}
+	
+	/**
 	 * Removes the last element from the list
 	 * @return The removed element
 	 * @throws IllegalStateException if list is empty
