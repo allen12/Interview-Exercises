@@ -122,8 +122,15 @@ public class LinkedList<T> implements Iterable<T>
 		else
 		{
 			Node tmp = head;
-			
-			while (tmp.next != null)
+
+			// Handle singleton list
+			if (tmp.next == null)
+			{
+				head = null;
+				return tmp.data;
+			}
+
+			while (tmp.next.next != null)
 				tmp = tmp.next;
 			
 			T ret = tmp.next.data;
@@ -287,5 +294,22 @@ public class LinkedList<T> implements Iterable<T>
 				return ret;
 			}
 		};
+	}
+
+	@Override
+	public String toString()
+	{
+		if (head == null)
+			return "[]";
+		
+		String a = "[";
+
+		for (T ele : this)
+			a += ele.toString() + ",";
+
+		a = a.substring(0, a.length() - 1);
+		a += "]";
+
+		return a;
 	}
 }
