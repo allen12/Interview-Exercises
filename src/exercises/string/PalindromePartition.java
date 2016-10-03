@@ -1,7 +1,6 @@
 package exercises.string;
 
-import java.util.ArrayList;
-import java.util.List;
+import datastructures.LinkedList;
 
 /**
  * Given a string, return all possible partitions of the string in its orginal
@@ -14,10 +13,10 @@ import java.util.List;
 public class PalindromePartition
 {
 
-    private static List<List<String>> palindromePartition(String str)
+    private static LinkedList<LinkedList<String>> palindromePartition(String str)
     {
-        List<List<String>> lst = new ArrayList<>();
-        palindromePartition_aux(lst, new ArrayList<String>(), str, 0);
+        LinkedList<LinkedList<String>> lst = new LinkedList<>();
+        palindromePartition_aux(lst, new LinkedList<>(), str, 0);
         return lst;
     }
 
@@ -29,14 +28,16 @@ public class PalindromePartition
      * @param str Full string to partition, never changes
      * @param n pointer to the index of the string to begin at
      */
-    private static void palindromePartition_aux(List<List<String>> list, List<String> partitions,
+    private static void palindromePartition_aux(LinkedList<LinkedList<String>> list, LinkedList<String> partitions,
                                                 String str, int n)
     {
         // Base case: if the current pointer has traversed the entire string, then
         // the partitions have covered the entire string and is a valid partition
         if (n == str.length())
         {
-            list.add(new ArrayList<>(partitions));
+            LinkedList<String> tmp = new LinkedList<>();
+            tmp.addAll(partitions);
+            list.addLast(tmp);
             return;
         }
 
@@ -47,15 +48,15 @@ public class PalindromePartition
             String substring = str.substring(n, i+1);
             if (Palindrome.isPalindrome_iter(substring))
             {
+
                 // If substring is a palindrome, add it as a possible partition and recurse
                 // on the remainder of the string
-                partitions.add(substring);
-
+                partitions.addLast(substring);
                 palindromePartition_aux(list, partitions, str, i+1);
 
                 // After recursive call, remove the added substring from the partial list in
                 // preparation for the next
-                partitions.remove(partitions.size() - 1);
+                partitions.removeLast();
             }
         }
     }
